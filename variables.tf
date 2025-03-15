@@ -1,13 +1,13 @@
 variable "project_id" {
   description = "The ID of the project"
   type        = string
-  default     = "cts-sbx-ad3-hardcore-heyrovsky"
+  default     = "cts-sbx-d03-eloquent-carson"
 }
 
 variable "project_number" {
   description = "The ID of the project"
   type        = string
-  default     = "226895231464"
+  default     = "1078797412348"
 }
 
 variable "region" {

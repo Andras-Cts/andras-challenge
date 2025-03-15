@@ -1,5 +1,5 @@
 resource "google_storage_bucket" "cloud-challenge-tfstate" {
-  name                        = "andras-challenge-tfstate"
+  name                        = "andras82-challenge-tfstate-new"
   location                    = var.region
   force_destroy               = false
   uniform_bucket_level_access = true
@@ -21,7 +21,7 @@ resource "google_storage_bucket" "cloud-challenge-tfstate" {
 }
 
 resource "google_storage_bucket" "challenge-webpage" {
-  name                        = "andras-challenge-webpage"
+  name                        = "andras-challenge-webpage-new"
   location                    = var.region
   force_destroy               = false
   uniform_bucket_level_access = true
@@ -44,7 +44,7 @@ resource "google_storage_bucket" "challenge-webpage" {
     }
   }
 
-  #   public_access_prevention = "enforced"   Uncomment later to play around with HTTPS LB
+  # public_access_prevention = "enforced"   Uncomment later to play around with HTTPS LB
 }
 
 resource "google_compute_backend_bucket" "challenge-backend-bucket" {

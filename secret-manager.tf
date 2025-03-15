@@ -11,5 +11,5 @@ resource "google_secret_manager_secret" "cloudflare-api-token" {
 
 data "google_secret_manager_secret_version" "cloudflare-api-token" {
   project = var.project_id
-  secret = "cloudflare-api-token"
+  secret  = "cloudflare-api-token"
 }

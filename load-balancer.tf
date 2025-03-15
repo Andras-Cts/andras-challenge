@@ -37,10 +37,3 @@ resource "google_compute_managed_ssl_certificate" "website-cert" {
     domains = ["andras-challenge.co.uk", "www.andras-challenge.co.uk", ]
   }
 }
-
-
-# resource "google_compute_backend_service" "" {
-#   name        = "backend"
-#   port_name   = "http"
-#   protocol    = "HTTP"
-#   timeout_sec = 10
