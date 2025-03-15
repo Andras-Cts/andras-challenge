@@ -1,0 +1,27 @@
+name: TF-Deploy-testing
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout-repo
+        uses: actions/checkout@v1
+
+      - name: Terraform
+        uses: hashicorp/setup-terraform@v1
+        
+      - name: terraform-start
+        run: |
+          terraform init
+          terraform validate
+          terraform plan
+      - name: terraform deploy
+        run: | 
+            terraform apply -auto-approve
