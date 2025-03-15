@@ -11,12 +11,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+            workload_identity_provider: "projects/1078797412348/locations/global/workloadIdentityPools/gh-actions-identity-pool/providers/github-actions-provider"
+            service_account: "challenge-terraform-sa@cts-sbx-d03-eloquent-carson.iam.gserviceaccount.com"
+
       - name: Checkout-repo
         uses: actions/checkout@v1
 
       - name: Terraform
         uses: hashicorp/setup-terraform@v1
-        
+
       - name: terraform-start
         run: |
           terraform init
