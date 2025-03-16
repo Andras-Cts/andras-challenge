@@ -15,10 +15,14 @@ jobs:
 
     steps:
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v1
+        id: auth  # This ID is required for accessing outputs in the 0auth access token step
+        uses: google-github-actions/auth@v2
         with:
             workload_identity_provider: "projects/1078797412348/locations/global/workloadIdentityPools/gh-actions-identity-pool/providers/github-actions-provider"
             service_account: "challenge-terraform-sa@cts-sbx-d03-eloquent-carson.iam.gserviceaccount.com"
+
+      - name: Setting up Google 0auth token
+        run: echo "GOOGLE_OAUTH_ACCESS_TOKEN=${{ steps.auth.outputs.access_token }}" >> $GITHUB_ENV
 
       - name: Checkout-repo
         uses: actions/checkout@v1
@@ -34,3 +38,4 @@ jobs:
       - name: terraform deploy
         run: | 
             terraform apply -auto-approve
+            
