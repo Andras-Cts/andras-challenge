@@ -34,6 +34,11 @@ variable "cloudflare_zone_id" {
   default = "f71d3c051957241fded675f6f278201b"
 }
 
+variable "placeholder" {
+  type    = string
+  default = "This is just a change to trigger gh actions"
+}
+
 # uncomment this once I have the credentials
 # variable "credentials" {
 #   description = "credentials value"
