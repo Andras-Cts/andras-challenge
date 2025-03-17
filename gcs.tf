@@ -43,7 +43,12 @@ resource "google_storage_bucket" "challenge-webpage" {
       age = 120 # auto delete objects after 120 days
     }
   }
-
+  cors {
+    origin          = ["http://andras-challenge.co.uk"]
+    method          = ["GET", "HEAD", "PUT", "POST", "DELETE"]
+    response_header = ["*"]
+    max_age_seconds = 3600
+  }
   # public_access_prevention = "enforced"   Uncomment later to play around with HTTPS LB
 }
 

@@ -5,6 +5,8 @@ resource "google_storage_bucket_iam_binding" "allow-lb-access" {
   members = [
     "serviceAccount:${var.project_id}@appspot.gserviceaccount.com",
     "serviceAccount:${var.project_number}@cloudservices.gserviceaccount.com",
+    "serviceAccount:service-1078797412348@compute-system.iam.gserviceaccount.com",
+    "serviceAccount:challenge-terraform-sa@${var.project_id}.iam.gserviceaccount.com"
   ]
 }
 
