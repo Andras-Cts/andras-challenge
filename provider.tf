@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "andras82-challenge-tfstate-new"
+    bucket = "andras-5am-challenge-tfstate-new"
   }
 
   required_providers {
@@ -20,8 +20,10 @@ terraform {
 }
 
 provider "google" {
-  project = var.project_id
-  region  = var.region
+  project               = var.project_id
+  region                = var.region
+  billing_project       = var.project_id
+  user_project_override = true
 }
 
 provider "google-beta" {

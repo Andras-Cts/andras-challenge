@@ -1,13 +1,13 @@
 variable "project_id" {
   description = "The ID of the project"
   type        = string
-  default     = "cts-sbx-d03-eloquent-carson"
+  default     = "andras-cv-challenge"
 }
 
 variable "project_number" {
   description = "The ID of the project"
   type        = string
-  default     = "1078797412348"
+  default     = "296888346216"
 }
 
 variable "region" {
@@ -31,13 +31,13 @@ variable "machine_type" {
 
 variable "cloudflare_zone_id" {
   type    = string
-  default = "f71d3c051957241fded675f6f278201b"
+  default = "0d4195bb29481c197381320208bef5d1"
 }
 
-variable "placeholder" {
-  type    = string
-  default = "This is just a change to trigger gh actions"
-}
+# variable "placeholder" {
+#   type    = string
+#   default = "This is just a change to trigger gh actions"
+# }
 
 # uncomment this once I have the credentials
 # variable "credentials" {
