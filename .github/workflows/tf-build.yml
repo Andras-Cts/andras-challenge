@@ -1,41 +1,42 @@
-# name: TF-Deploy-testing
-# run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-# on:
-#   push:
-#     branches:
-#       - main
+name: TF-Deploy-testing
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  push:
+    branches:
+      - main
 
-# jobs:
-#   build:
+jobs:
+  build:
 
-#     runs-on: ubuntu-latest
-#     permissions:
-#         id-token: write
-#         contents: read
+    runs-on: ubuntu-latest
+    permissions:
+        id-token: write
+        contents: read
 
-#     steps:
-#       - name: Authenticate to Google Cloud
-#         id: auth  # This ID is required for accessing outputs in the 0auth access token step
-#         uses: google-github-actions/auth@v2
-#         with:
-#             workload_identity_provider: "projects/1078797412348/locations/global/workloadIdentityPools/gh-actions-identity-pool/providers/github-actions-provider"
-#             service_account: "challenge-terraform-sa@cts-sbx-d03-eloquent-carson.iam.gserviceaccount.com"
+    steps:
+      - name: Authenticate to Google Cloud
+        id: auth  # This ID is required for accessing outputs in the 0auth access token step
+        uses: google-github-actions/auth@v2
+        with:
+            workload_identity_provider: "projects/296888346216/locations/global/workloadIdentityPools/gh-actions-identity-pool/providers/github-actions-provider"
+            service_account: "challenge-terraform-sa@andras-cv-challenge.iam.gserviceaccount.com"
 
-#       - name: Setting up Google 0auth token
-#         run: echo "GOOGLE_OAUTH_ACCESS_TOKEN=${{ steps.auth.outputs.access_token }}" >> $GITHUB_ENV
+      - name: Setting up Google 0auth token
+        run: echo "GOOGLE_OAUTH_ACCESS_TOKEN=${{ steps.auth.outputs.access_token }}" >> $GITHUB_ENV
 
-#       - name: Checkout-repo
-#         uses: actions/checkout@v1
+      - name: Checkout-repo
+        uses: actions/checkout@v1
 
-#       - name: Terraform
-#         uses: hashicorp/setup-terraform@v1
+      - name: Terraform
+        uses: hashicorp/setup-terraform@v1
 
-#       - name: terraform-start
-#         run: |
-#           terraform init
-#           terraform validate
-#           terraform plan
-#       - name: terraform deploy
-#         run: | 
-#             terraform apply -auto-approve
+      - name: terraform-start
+        run: |
+          terraform init
+          terraform fmt --recursive
+          terraform validate
+          terraform plan
+      - name: terraform deploy
+        run: | 
+            terraform apply -auto-approve
             
