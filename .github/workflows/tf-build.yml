@@ -20,10 +20,6 @@ jobs:
         with:
             workload_identity_provider: "projects/296888346216/locations/global/workloadIdentityPools/gh-actions-identity-pool/providers/github-actions-provider"
             service_account: "challenge-terraform-sa@andras-cv-challenge.iam.gserviceaccount.com"
-
-      - name: Setting up Google 0auth token
-        run: echo "GOOGLE_OAUTH_ACCESS_TOKEN=${{ steps.auth.outputs.access_token }}" >> $GITHUB_ENV
-
       - name: Checkout-repo
         uses: actions/checkout@v1
 
