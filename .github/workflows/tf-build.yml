@@ -18,7 +18,7 @@ jobs:
         id: auth  # This ID is required for accessing outputs in the 0auth access token step
         uses: google-github-actions/auth@v2
         with:
-            token_format: "acces-token"
+            token_format: "access-token"
             workload_identity_provider: "projects/296888346216/locations/global/workloadIdentityPools/gh-actions-identity-pool/providers/github-actions-provider"
             service_account: "challenge-terraform-sa@andras-cv-challenge.iam.gserviceaccount.com"
         
