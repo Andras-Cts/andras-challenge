@@ -17,10 +17,10 @@ jobs:
       - name: Authenticate to Google Cloud
         id: auth  # This ID is required for accessing outputs in the 0auth access token step
         uses: google-github-actions/auth@v2
-        with:
-            token_format: "access_token"
-            workload_identity_provider: "projects/296888346216/locations/global/workloadIdentityPools/gh-actions-identity-pool/providers/github-actions-provider"
-            service_account: "challenge-terraform-sa@andras-cv-challenge.iam.gserviceaccount.com"
+        # with:
+        #     token_format: "access_token"
+        #     workload_identity_provider: "projects/296888346216/locations/global/workloadIdentityPools/gh-actions-identity-pool/providers/github-actions-provider"
+        #     service_account: "challenge-terraform-sa@andras-cv-challenge.iam.gserviceaccount.com"
     
       - name: Configure gcloud for ADC
         run: gcloud auth application-default login --quiet
@@ -35,12 +35,16 @@ jobs:
         uses: hashicorp/setup-terraform@v1
 
       - name: terraform-start
+        env:
+            GOOGLE_0AUTH_ACCESS_TOKEN: ${{ steps.auth.outcome.access_token }} 
         run: |
           terraform init
           terraform fmt --recursive
           terraform validate
           terraform plan
       - name: terraform deploy
+        env:
+            GOOGLE_0AUTH_ACCESS_TOKEN: ${{ steps.auth.outcome.access_token }} 
         run: | 
             terraform apply -auto-approve
             
