@@ -1,5 +1,5 @@
 name: TF-Deploy-testing
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: ${{ github.actor }} is testing out GitHub Actions 
 on:
   push:
     branches:
@@ -21,6 +21,9 @@ jobs:
             token_format: "access_token"
             workload_identity_provider: "projects/296888346216/locations/global/workloadIdentityPools/gh-actions-identity-pool/providers/github-actions-provider"
             service_account: "challenge-terraform-sa@andras-cv-challenge.iam.gserviceaccount.com"
+    
+      - name: Configure gcloud for ADC
+        run: gcloud auth application-default login --quiet
         
       - name: Set up cloud SDK
         uses: google-github-actions/setup-gcloud@v1
