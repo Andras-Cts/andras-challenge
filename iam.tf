@@ -62,6 +62,13 @@ resource "google_project_iam_member" "terraform-sa-bucket-admin" {
 
 }
 
+resource "google_project_iam_member" "terraform-service-usage" {
+  project = var.project_id
+  role    = "roles/serviceusage.serviceUsageAdmin"
+  member  = "serviceAccount:challenge-terraform-sa@${var.project_id}.iam.gserviceaccount.com"
+
+}
+
 # resource "google_storage_bucket_iam_binding" "allow-lb-access" {
 #   bucket = "andras-challenge-webpage-new"
 #   role   = "roles/storage.objectViewer"
