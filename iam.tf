@@ -55,6 +55,13 @@ resource "google_service_account_iam_member" "github-actions-token-creator" {
   member             = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.gh-actions-pool.name}/attribute.repository/Andras-Cts/andras-challenge"
 }
 
+resource "google_project_iam_member" "terraform-sa-bucket-admin" {
+  project = var.project_id
+  role    = "roles/storage.admin"
+  member  = "serviceAccount:challenge-terraform-sa@${var.project_id}.iam.gserviceaccount.com"
+
+}
+
 # resource "google_storage_bucket_iam_binding" "allow-lb-access" {
 #   bucket = "andras-challenge-webpage-new"
 #   role   = "roles/storage.objectViewer"

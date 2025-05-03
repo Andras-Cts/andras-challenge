@@ -24,7 +24,7 @@ provider "google" {
   region                = var.region
   billing_project       = var.project_id
   user_project_override = true
-  access_token = env.GOOGLE_0AUTH_ACCESS_TOKEN
+  # access_token          = env.GOOGLE_0AUTH_ACCESS_TOKEN
   # Enable ADC via OIDC token
   # credentials = null
 }
