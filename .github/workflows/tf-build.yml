@@ -18,13 +18,12 @@ jobs:
         id: auth  # This ID is required for accessing outputs in the 0auth access token step
         uses: google-github-actions/auth@v2
         with:
+            token_format: "acces-token"
             workload_identity_provider: "projects/296888346216/locations/global/workloadIdentityPools/gh-actions-identity-pool/providers/github-actions-provider"
             service_account: "challenge-terraform-sa@andras-cv-challenge.iam.gserviceaccount.com"
         
-      - name: Set environment variables for ADC
-        run: |
-            echo "GOOGLE_APPLICATION_CREDENTIALS=" >> $GITHUB_ENV
-    
+      - name: Set up cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
 
       - name: Checkout-repo
         uses: actions/checkout@v1
