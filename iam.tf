@@ -55,16 +55,23 @@ resource "google_service_account_iam_member" "github-actions-token-creator" {
   member             = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.gh-actions-pool.name}/attribute.repository/Andras-Cts/andras-challenge"
 }
 
-resource "google_project_iam_member" "terraform-sa-bucket-admin" {
+resource "google_project_iam_member" "terraform-sa-permissions" {
+  for_each = toset([
+    "roles/compute.admin",
+    "roles/monitoring.editor",
+    "roles/serviceusage.serviceUsageAdmin",
+    "roles/logging.logWriter",
+    "roles/storage.admin",
+    "roles/billing.viewer",
+    "roles/pubsub.admin",
+    "roles/secretmanager.admin",
+    "roles/iam.serviceAccountAdmin",
+    "roles/iam.workloadIdentityPoolAdmin",
+    "roles/resourcemanager.projectIamAdmin",
+    "roles/cloudfunctions.admin",
+  ])
   project = var.project_id
-  role    = "roles/storage.admin"
-  member  = "serviceAccount:challenge-terraform-sa@${var.project_id}.iam.gserviceaccount.com"
-
-}
-
-resource "google_project_iam_member" "terraform-service-usage" {
-  project = var.project_id
-  role    = "roles/serviceusage.serviceUsageAdmin"
+  role    = each.value
   member  = "serviceAccount:challenge-terraform-sa@${var.project_id}.iam.gserviceaccount.com"
 
 }
