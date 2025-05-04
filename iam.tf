@@ -62,7 +62,6 @@ resource "google_project_iam_member" "terraform-sa-permissions" {
     "roles/serviceusage.serviceUsageAdmin",
     "roles/logging.logWriter",
     "roles/storage.admin",
-    "roles/billing.viewer",
     "roles/pubsub.admin",
     "roles/secretmanager.admin",
     "roles/iam.serviceAccountAdmin",
@@ -74,6 +73,12 @@ resource "google_project_iam_member" "terraform-sa-permissions" {
   role    = each.value
   member  = "serviceAccount:challenge-terraform-sa@${var.project_id}.iam.gserviceaccount.com"
 
+}
+
+resource "google_billing_account_iam_member" "terraform-sa-billing-viewer" {
+  billing_account_id = "013920-C33AB8-B6A496"
+  role               = "roles/billing.viewer"
+  member             = "serviceAccount:challenge-terraform-sa@${var.project_id}.iam.gserviceaccount.com"
 }
 
 # resource "google_storage_bucket_iam_binding" "allow-lb-access" {
