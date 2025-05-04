@@ -68,6 +68,7 @@ resource "google_project_iam_member" "terraform-sa-permissions" {
     "roles/iam.workloadIdentityPoolAdmin",
     "roles/resourcemanager.projectIamAdmin",
     "roles/cloudfunctions.admin",
+    "roles/cloudfunctions.serviceAgent",
   ])
   project = var.project_id
   role    = each.value
