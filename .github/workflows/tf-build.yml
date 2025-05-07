@@ -38,7 +38,7 @@ jobs:
     needs: deploy
     steps:
     - name: Cypress e2e tests
-      uses: cypress-io/github-actions@v6
+      uses: cypress-io/github-actions@v6.9.0
       with:
         run: npx cypress run
         env:
