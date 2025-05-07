@@ -6,6 +6,7 @@ module.exports = defineConfig({
     viewportWidth: 1280,
     viewportHeight: 720,
     specPattern: "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}",
+    supportFile: false,
     pageLoadTimeout: 5000,
     retries: {
       runMode: 2,
