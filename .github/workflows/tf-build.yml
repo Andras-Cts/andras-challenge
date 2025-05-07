@@ -47,3 +47,6 @@ jobs:
         run: npx cypress run
     env:
       NODE_OPTIONS: "--no-experimental-require-module --no-experimental-detect-module"
+      run: |
+            echo "### Cypress Test Results" >> $GITHUB_STEP_SUMMARY
+            cat results.txt >> $GITHUB_STEP_SUMMARY
