@@ -51,4 +51,4 @@ jobs:
       - name: Add cypress summary to github actions
         run: |
             echo "### Cypress Test Results" >> $GITHUB_STEP_SUMMARY
-            cat results/results.txt >> $GITHUB_STEP_SUMMARY
+            cat results/results.xml >> $GITHUB_STEP_SUMMARY
