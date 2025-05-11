@@ -21,7 +21,7 @@ resource "google_storage_bucket" "cloud-challenge-tfstate" {
 }
 
 resource "google_storage_bucket" "challenge-webpage" {
-  name                        = "andras-challenge-webpage-new"
+  name                        = "andras-challenge.co.uk"
   location                    = var.region
   force_destroy               = true
   uniform_bucket_level_access = true
@@ -66,6 +66,18 @@ resource "google_storage_bucket_object" "css-files" {
   name   = "CSS/${each.key}"
   bucket = google_storage_bucket.challenge-webpage.name
   source = "../CSS/${each.key}"
+}
+
+resource "google_storage_bucket_object" "web-index-file" {
+  name   = "index.html"
+  bucket = google_storage_bucket.challenge-webpage.name
+  source = "../index.html"
+}
+
+resource "google_storage_bucket_object" "web-404-file" {
+  name   = "404.html"
+  bucket = google_storage_bucket.challenge-webpage.name
+  source = "../404.html"
 }
 
 resource "google_compute_backend_bucket" "challenge-backend-bucket" {
