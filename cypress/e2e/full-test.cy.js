@@ -19,7 +19,10 @@ describe('Homepage content testing', () => {
     cy.get('a[href*="linkedin.com/in/andras-pal"]')
     .invoke('attr', 'href')
     .then((url) => {
-      cy.request(url).its('status').should('eq', 200)
+      cy.request({
+        url,
+        followRedirect: true,
+      }).its('status').should('eq', 200)
     })
   })
 }) 
