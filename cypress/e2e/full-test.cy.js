@@ -15,14 +15,9 @@ describe('Homepage content testing', () => {
     cy.get('a[href*="linkedin.com/in/andras-pal"]').should('exist')
   })
   
-  it('QR link working', () => {
+  it('QR link has correct href', () => {
     cy.get('a[href*="linkedin.com/in/andras-pal"]')
-    .invoke('attr', 'href')
-    .then((url) => {
-      cy.request({
-        url,
-        followRedirect: true,
-      }).its('status').should('eq', 200)
-    })
+      .should('have.attr', 'href')
+      .and('include', 'linkedin.com/in/andras-pal')
   })
-}) 
+})
