@@ -19,7 +19,7 @@ resource "google_billing_budget" "budget" {
     }
   }
   threshold_rules {
-    threshold_percent = 0.2
+    threshold_percent = 3
     spend_basis       = "CURRENT_SPEND"
   }
   all_updates_rule {

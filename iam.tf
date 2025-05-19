@@ -84,6 +84,15 @@ resource "google_billing_account_iam_member" "terraform-sa-billing-viewer" {
   member             = "serviceAccount:challenge-terraform-sa@${var.project_id}.iam.gserviceaccount.com"
 }
 
+# resource "google_cloudfunctions2_function_iam_member" "noauth" {
+#   project        = var.project_id
+#   location       = var.region
+#   cloud_function = google_cloudfunctions2_function.backend-function.name
+#   role           = "roles/cloudfunctions.invoker"
+#   member         = "allUsers"
+# }
+
+
 # resource "google_storage_bucket_iam_binding" "allow-lb-access" {
 #   bucket = "andras-challenge-webpage-new"
 #   role   = "roles/storage.objectViewer"
