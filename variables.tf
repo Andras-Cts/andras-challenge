@@ -34,7 +34,7 @@ variable "cloudflare_zone_id" {
   default = "0d4195bb29481c197381320208bef5d1"
 }
 
-variable "cloudflare_api_token" {}
+# variable "cloudflare_api_token" {}
 
 # variable "placeholder" {
 #   type    = string
