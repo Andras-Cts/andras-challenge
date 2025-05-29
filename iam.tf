@@ -42,18 +42,18 @@ resource "google_secret_manager_secret_iam_member" "messaging-pubsub-sa-pass-acc
   member    = "serviceAccount:messaging-pubsub-sa@${var.project_id}.iam.gserviceaccount.com"
 }
 
-resource "google_service_account_iam_member" "terraform-sa-workload-identity-user" {
-  service_account_id = google_service_account.terraform-sa.name
-  role               = "roles/iam.workloadIdentityUser"
-  member             = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.gh-actions-pool.name}/attribute.repository/Andras-Cts/andras-challenge"
+# resource "google_service_account_iam_member" "terraform-sa-workload-identity-user" {
+#   service_account_id = google_service_account.terraform-sa.name
+#   role               = "roles/iam.workloadIdentityUser"
+#   member             = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.gh-actions-pool.name}/attribute.repository/Andras-Cts/andras-challenge"
 
-}
+# }
 
-resource "google_service_account_iam_member" "github-actions-token-creator" {
-  service_account_id = google_service_account.terraform-sa.name
-  role               = "roles/iam.serviceAccountTokenCreator"
-  member             = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.gh-actions-pool.name}/attribute.repository/Andras-Cts/andras-challenge"
-}
+# resource "google_service_account_iam_member" "github-actions-token-creator" {
+#   service_account_id = google_service_account.terraform-sa.name
+#   role               = "roles/iam.serviceAccountTokenCreator"
+#   member             = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.gh-actions-pool.name}/attribute.repository/Andras-Cts/andras-challenge"
+# }
 
 resource "google_project_iam_member" "terraform-sa-permissions" {
   for_each = toset([

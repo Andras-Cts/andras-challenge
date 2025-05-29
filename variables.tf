@@ -13,13 +13,13 @@ variable "project_number" {
 variable "region" {
   description = "Region of the main project"
   type        = string
-  default     = "europe-west2"
+  default     = "europe-west1"
 }
 
 variable "zone" {
   description = "Zone of the main project "
   type        = string
-  default     = "europe-west2-a"
+  default     = "europe-west1-a"
 }
 
 variable "machine_type" {
@@ -33,6 +33,8 @@ variable "cloudflare_zone_id" {
   type    = string
   default = "0d4195bb29481c197381320208bef5d1"
 }
+
+variable "cloudflare_api_token" {}
 
 # variable "placeholder" {
 #   type    = string

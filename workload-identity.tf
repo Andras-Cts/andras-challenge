@@ -1,11 +1,11 @@
-resource "google_iam_workload_identity_pool" "gh-actions-pool" {
-  workload_identity_pool_id = "gh-actions-identity-pool"
+resource "google_iam_workload_identity_pool" "pool-gh-actions" {
+  workload_identity_pool_id = "gh-actions-identity-pool-new"
   display_name              = "Github Actions Identity Pool"
   description               = "Used to Authenticate to GCP"
 }
 
 resource "google_iam_workload_identity_pool_provider" "name" {
-  workload_identity_pool_id          = google_iam_workload_identity_pool.gh-actions-pool.workload_identity_pool_id
+  workload_identity_pool_id          = google_iam_workload_identity_pool.pool-gh-actions.workload_identity_pool_id
   workload_identity_pool_provider_id = "github-actions-provider"
   display_name                       = "Github Actions Provider"
   description                        = "Used to Auth to GCP"
