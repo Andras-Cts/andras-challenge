@@ -60,7 +60,7 @@ resource "google_cloud_run_service" "backend-test" {
   template {
     spec {
       containers {
-        image = "europe-west2-docker.pkg.dev/andras-cv-challenge/andras-crc/andras-test-image:latest"
+        image = "${var.region}-docker.pkg.dev/${var.project_id}/andras-crc/andras-test-image:latest"
       }
     }
   }

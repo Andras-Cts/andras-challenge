@@ -1,7 +1,7 @@
 resource "google_storage_bucket" "cloud-challenge-tfstate" {
-  name                        = "andras-5am-challenge-tfstate-new"
+  name                        = "andras-5am-challenge-tfstate-latest"
   location                    = var.region
-  force_destroy               = false
+  force_destroy               = true
   uniform_bucket_level_access = true
 
   versioning {

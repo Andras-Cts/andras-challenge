@@ -1,6 +1,6 @@
-resource "google_firestore_database" "datastore_mode_database" {
+resource "google_firestore_database" "backend-db" {
   project     = var.project_id
   name        = "crc-db"
   location_id = var.region
-  type        = "DATASTORE_MODE"
+  type        = "FIRESTORE_NATIVE"
 }
