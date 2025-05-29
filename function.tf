@@ -66,6 +66,19 @@ resource "google_cloud_run_service" "backend-test" {
   }
 }
 
+resource "google_cloud_run_domain_mapping" "webpage-mapping" {
+  location = var.region
+  name     = "andras-challenge.co.uk"
+
+  metadata {
+    namespace = var.project_id
+  }
+
+  spec {
+    route_name = google_cloud_run_service.backend-test.name
+  }
+}
+
 data "google_iam_policy" "noauth" {
   binding {
     role = "roles/run.invoker"
