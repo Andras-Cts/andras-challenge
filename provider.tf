@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "andras-5am-challenge-tfstate-new"
+    bucket = "andras-5am-challenge-tfstate-latest"
   }
 
   required_providers {
