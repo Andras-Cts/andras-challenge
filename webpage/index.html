@@ -98,6 +98,18 @@
         </ul>
         <br>
         <a href="#title">Back to the top</a>
+
+        <script>
+            fetch("https://andras-challenge.co.uk/")
+              .then(response => response.json())
+              .then(data => {
+                document.getElementById("message").textContent = data.message;
+              })
+              .catch(error => {
+                console.error("Error:", error);
+              });
+          </script>
+          
         
     </body>
     
