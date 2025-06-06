@@ -36,10 +36,10 @@ variable "cloudflare_zone_id" {
 
 # variable "cloudflare_api_token" {}
 
-# variable "placeholder" {
-#   type    = string
-#   default = "This is just a change to trigger gh actions"
-# }
+variable "placeholder" {
+  type    = string
+  default = "This is just a change to trigger gh actions"
+}
 
 # uncomment this once I have the credentials
 # variable "credentials" {
