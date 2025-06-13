@@ -62,7 +62,18 @@ resource "google_project_service" "dns-api" {
   project = var.project_id
   service = "dns.googleapis.com"
 }
+
 resource "google_project_service" "firestore-api" {
   project = var.project_id
   service = "firestore.googleapis.com"
+}
+
+resource "google_project_service" "apigateway-api" {
+  project = var.project_id
+  service = "apigateway.googleapis.com"
+}
+
+resource "google_project_service" "service-control-api" {
+  project = var.project_id
+  service = "servicecontrol.googleapis.com"
 }
