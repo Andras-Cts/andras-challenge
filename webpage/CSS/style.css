@@ -40,6 +40,16 @@ h5{
     margin: 0;
 }
 
+.website-counter {
+  background-color: #ff4957;
+  height: 50px;
+  width: 80px;
+  color: white;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 25px;
+  margin-top: 10px;
+}
 
 .title-container {
     display: flex;

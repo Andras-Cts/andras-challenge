@@ -80,6 +80,12 @@ resource "google_storage_bucket_object" "web-404-file" {
   source = "${path.module}/webpage/404.html"
 }
 
+resource "google_storage_bucket_object" "jason-file" {
+  name   = "index.js"
+  bucket = google_storage_bucket.challenge-webpage.name
+  source = "${path.module}/webpage/index.js"
+}
+
 resource "google_compute_backend_bucket" "challenge-backend-bucket" {
   name        = "challenge-static-backend"
   description = "Backend for the website"

@@ -1,3 +1,4 @@
 flask==2.2.5
 gunicorn==21.2.0
 firebase-admin
+flask_cors

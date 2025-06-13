@@ -16,22 +16,22 @@ resource "cloudflare_dns_record" "www" {
   proxied = true
 }
 
-resource "cloudflare_dns_record" "a_records" {
-  for_each = toset(local.a_records)
-  zone_id  = var.cloudflare_zone_id
-  name     = "www"
-  type     = "A"
-  content  = each.key
-  ttl      = 1
-  proxied  = false
-}
+# resource "cloudflare_dns_record" "a_records" {
+#   for_each = toset(local.a_records)
+#   zone_id  = var.cloudflare_zone_id
+#   name     = "www"
+#   type     = "A"
+#   content  = each.key
+#   ttl      = 1
+#   proxied  = false
+# }
 
-resource "cloudflare_dns_record" "aaaa_records" {
-  for_each = toset(local.aaaa_records)
-  zone_id  = var.cloudflare_zone_id
-  name     = "@"
-  type     = "AAAA"
-  content  = each.key
-  ttl      = 1
-  proxied  = false
-}
+# resource "cloudflare_dns_record" "aaaa_records" {
+#   for_each = toset(local.aaaa_records)
+#   zone_id  = var.cloudflare_zone_id
+#   name     = "@"
+#   type     = "AAAA"
+#   content  = each.key
+#   ttl      = 1
+#   proxied  = false
+# }
